@@ -75,6 +75,9 @@ object RpmHelper {
       "rpmbuild",
       "-bb",
       "--target", spec.meta.arch + '-' + spec.meta.vendor + '-' + spec.meta.os,
+      "--define", "_target_cpu " + spec.meta.arch,
+      "--define", "_target_vendor " + spec.meta.vendor,
+      "--define", "_target_os " + spec.meta.os,
       "--buildroot", buildRoot.getAbsolutePath,
       "--define", "_topdir " + workArea.getAbsolutePath
     ) ++ (
